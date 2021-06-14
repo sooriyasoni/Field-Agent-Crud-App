@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import Landing from './components/pages/Landing';
+import AddAgent from './components/pages/AddAgent';
+import Navbar from './components/Layout/Navbar';
+import  {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import NotFound from './components/pages/NotFound';
+import EditAgent from './components/pages/EditAgent';
+import Agent from './components/pages/Agent';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Switch>
+        <Route exact path = "/" component={Landing}/>
+        <Route exact path = "/addAgent" component={AddAgent}/>
+        <Route exact path = "/editAgent/:id" component={EditAgent}/>
+        <Route exact path = "/agent/:id" component={Agent}/>
+        <Route component = {NotFound}/>
+      </Switch>
     </div>
+    </Router>
   );
 }
 
