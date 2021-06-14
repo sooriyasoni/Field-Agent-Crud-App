@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 
+// Using navLink to navigate from one component to other 
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

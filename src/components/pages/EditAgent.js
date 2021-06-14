@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 
+// update an agent (works same as add)
 function EditAgent() {
 
     let history = useHistory();

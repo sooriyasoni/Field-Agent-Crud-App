@@ -8,9 +8,3 @@
     align-items: center;
 }
 
-h1:{
-    border-block: inherit;
-    background-color: lightgrey;
-    font-style: oblique;
-    justify-content: center;
-}

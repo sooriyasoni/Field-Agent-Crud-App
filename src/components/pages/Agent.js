@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react';
 import { Link, useParams} from 'react-router-dom'
 
 const Agent = () => {
-
+    
     const [agent, setAgent] = useState([{
         firstName: "",
         lastName:"",
@@ -11,6 +11,7 @@ const Agent = () => {
         heightInInches:0    
     }])
     
+    //using this hook to get ID from url
     const { id } = useParams();
 
     useEffect(()=>
@@ -18,6 +19,7 @@ const Agent = () => {
         loadAgent();
     },[]);
 
+    //get an agent
     const loadAgent = () => {
         fetch(`http://localhost:8080/api/agent/${id}`)
         .then(response => {

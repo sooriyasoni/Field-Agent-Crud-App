@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
+//landing page with list of agents and options to crud
 function Landing() {
 
     const [agent, setAgent] = useState([]);
@@ -10,6 +11,7 @@ function Landing() {
         loadAgents();
     }, []);
 
+    //load all agents when page loads
     const loadAgents = async () => {
         const fetchAgents = await fetch("http://localhost:8080/api/agent");
         try {
@@ -26,6 +28,7 @@ function Landing() {
         }
     }
 
+    //delete function when delete is clicked
     const deleteAgent = async (id) => {
         const deleteItem = await fetch(`http://localhost:8080/api/agent/${id}`, { method: "DELETE" });
         try {
@@ -71,7 +74,7 @@ function Landing() {
                                     <td>
                                         <Link className="btn btn-primary" style = {{background : "black"}} to = {`/agent/${agent.agentId}`}>View</Link>
                                         <Link className="btn btn-outline-primary" style = {{background : "black"}} to = {`/editAgent/${agent.agentId}`}>Edit</Link>
-                                        <Link className="btn btn-danger" style = {{background : "black"}} onClick={() => deleteAgent(agent.agentId)}>Delete</Link>
+                                        <Link className="btn btn-danger" style = {{background : "black"}} onClick={() => deleteAgent(agent.agentId)} to = {"/"}>Delete</Link>
                                     </td>
                                 </tr>)
                             })

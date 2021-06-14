@@ -1,5 +1,6 @@
 import React from 'react';
 
+// not found in case the url is not right
 const NotFound = ()=>{
     return(
         <div className = "not-found">

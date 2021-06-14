@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+
+//adding an agent
 function AddAgent() {
 
     const [agent, setAgent] = useState([])
 
+    //assigning fields for agent to map 
     const { firstName, middleName, lastName, dob, heightInInches } = agent;
 
-
-
+    // set agent on change of input with target value
     const onInputChange = (e) => {
-
-        //agent height between 36-96
         setAgent({ ...agent, [e.target.name]: e.target.value })
     }
 
+    //using this to navigate to previous page
     let history = useHistory();
 
+    // triggered on clicking submit button
     const onSubmit = async (e) => {
         e.preventDefault()
 
+        //setting agent id to zero for adding agent
         agent.id = 0;
 
+        //validation from server 
         if (agent.heightInInches < 36 || agent.heightInInches > 96) {
            alert('Please enter height between 36 to 96');
            return;
         }
-        
-
+            
         const init = {
             method: "POST",
             headers: {
@@ -45,7 +48,7 @@ function AddAgent() {
             })
             .then(json => setAgent(json))
             .catch(console.log)
-
+        // push back to previous page after adding
         history.push("/")
     }
 
